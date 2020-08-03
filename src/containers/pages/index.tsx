@@ -77,13 +77,28 @@ const Pages: FC = () => {
   });
   const dispatch = useDispatch();
   const { minusSites, plusSites } = useSitesConstants();
+  const [keyCode, setKeyCode] = useState<
+    Parameters<NonNullable<SearchInputProps["handleKeyDown"]>>[0]["keyCode"]
+  >(0);
+  const [inputValue, setInputValue] = useState("");
   const onSubmit = useCallback<SubmitHandler<FieldValues>>(
     ({ q, site }) => {
-      if (!q) {
+      let searchValue = inputValue;
+
+      if (q) {
+        if (keyCode === 0 && searchValue) {
+          return;
+        }
+
+        const { value } = q;
+
+        searchValue = value;
+      }
+
+      if (!searchValue) {
         return;
       }
 
-      const { value } = q;
       const plusSiteQuery = plusSites
         .filter(({ id }) => site[id])
         .map(({ children }) => children)
@@ -94,7 +109,7 @@ const Pages: FC = () => {
         .join(" ");
       const query = `${
         plusSiteQuery || "レシピ"
-      } ${minusSiteQuery} ${value}`.replace(/\s+/g, " ");
+      } ${minusSiteQuery} ${searchValue}`.replace(/\s+/g, " ");
 
       window.open(`http://www.google.co.jp/search?num=100&q=${query}`);
 
@@ -102,12 +117,20 @@ const Pages: FC = () => {
       dispatch(
         setSearchHistory({
           searchHistories: Array.from(
-            new Set([value, ...searchHistories])
+            new Set([searchValue, ...searchHistories])
           ).filter((_, index) => index < optionsNumber),
         })
       );
     },
-    [dispatch, minusSites, optionsNumber, plusSites, searchHistories]
+    [
+      dispatch,
+      inputValue,
+      keyCode,
+      minusSites,
+      optionsNumber,
+      plusSites,
+      searchHistories,
+    ]
   );
   const plusItems = useMemo<SearchFormInnerProps["plusItems"]>(
     () =>
@@ -131,7 +154,6 @@ const Pages: FC = () => {
   );
   const { windowWidth } = useWindowSize();
   const [options, setOptions] = useState<SearchInputProps["options"]>([]);
-  const [inputValue, setInputValue] = useState("");
   const handleInputChange = useCallback<
     NonNullable<SearchInputProps["handleInputChange"]>
   >(
@@ -151,9 +173,6 @@ const Pages: FC = () => {
   const [isLoading, setIsLoading] = useState<SearchInputProps["isLoading"]>(
     false
   );
-  const [keyCode, setKeyCode] = useState<
-    Parameters<NonNullable<SearchInputProps["handleKeyDown"]>>[0]["keyCode"]
-  >(0);
   const handleKeyDown = useCallback<
     NonNullable<SearchInputProps["handleKeyDown"]>
   >(
@@ -172,16 +191,6 @@ const Pages: FC = () => {
     setKeyCode(0);
     handleSubmit(onSubmit)();
   }, [handleSubmit, keyCode, onSubmit, setKeyCode]);
-
-  useEffect(() => {
-    if (!inputValue) {
-      return;
-    }
-
-    setIsLoading(true);
-
-    dispatch(getSearch.started({ q: inputValue }));
-  }, [dispatch, inputValue, setIsLoading]);
 
   useEffect(() => {
     setOptions(
@@ -221,6 +230,16 @@ const Pages: FC = () => {
     searchHistories,
     setOptions,
   ]);
+
+  useEffect(() => {
+    if (!inputValue) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    dispatch(getSearch.started({ q: inputValue }));
+  }, [dispatch, inputValue, setIsLoading]);
 
   useEffect(() => {
     setIsLoading(false);

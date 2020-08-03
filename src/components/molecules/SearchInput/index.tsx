@@ -1,5 +1,4 @@
 import "./style.module.scss";
-import "./style.module.scss";
 
 import React, { FC, useCallback, useMemo } from "react";
 import Select, { components } from "react-select";
@@ -55,6 +54,10 @@ const SearchInput: FC<SearchInputProps> = ({
     }),
     [option]
   );
+  const loadingMessage = useCallback<NonNullable<Props["loadingMessage"]>>(
+    () => (<BarLoader color="#9aa0a6" height={4} width={40} />) as any,
+    []
+  );
 
   return (
     <Controller
@@ -65,7 +68,7 @@ const SearchInput: FC<SearchInputProps> = ({
       control={control}
       isClearable={true}
       isLoading={isLoading}
-      loadingMessage={() => <BarLoader color="#9aa0a6" height={4} width={40} />}
+      loadingMessage={loadingMessage}
       menuPosition="fixed"
       name={name}
       noOptionsMessage={() => "検索してみてください"}
