@@ -12,12 +12,14 @@ type CompleteSuggestion = {
 };
 
 export type SearchState = {
+  q: string;
   toplevel: {
     CompleteSuggestion?: CompleteSuggestion[];
   };
 };
 
 const initialState: Readonly<SearchState> = {
+  q: "",
   toplevel: {
     CompleteSuggestion: undefined,
   },
@@ -25,7 +27,7 @@ const initialState: Readonly<SearchState> = {
 
 const search = reducerWithInitialState(initialState).case(
   getSearch.done,
-  (state, { result }) => ({ ...state, ...result })
+  (state, { params, result }) => ({ ...state, ...params, ...result })
 );
 
 export default search;
