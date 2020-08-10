@@ -14,11 +14,11 @@
   height: 100%;
   justify-content: space-between;
   padding: 0 24px;
+}
 
-  .list {
-    display: grid;
-    font-size: 0;
-    gap: 12px;
-    grid-template: auto / repeat(4, auto);
-  }
+.list {
+  display: grid;
+  font-size: 0;
+  gap: 12px;
+  grid-template: auto / repeat(4, auto);
 }
