@@ -7,10 +7,16 @@ import { MdSearch } from "react-icons/md";
 
 export type SuggestionProps = {
   handleClick: JSX.IntrinsicElements["div"]["onClick"];
+  handleClickOnRemoveButton: JSX.IntrinsicElements["button"]["onClick"];
   type: "history" | "search";
 };
 
-const Suggestion: FC<SuggestionProps> = ({ children, handleClick, type }) => {
+const Suggestion: FC<SuggestionProps> = ({
+  children,
+  handleClick,
+  handleClickOnRemoveButton,
+  type,
+}) => {
   const icon = useMemo(
     () =>
       type === "history" ? (
@@ -20,11 +26,23 @@ const Suggestion: FC<SuggestionProps> = ({ children, handleClick, type }) => {
       ),
     [type]
   );
+  const button = useMemo(
+    () =>
+      type === "history" ? (
+        <button onClick={handleClickOnRemoveButton} styleName="button">
+          削除
+        </button>
+      ) : null,
+    [handleClickOnRemoveButton, type]
+  );
 
   return (
-    <div onClick={handleClick} styleName="suggestion">
-      {icon}
-      {children}
+    <div styleName="suggestion">
+      <div onClick={handleClick} styleName="text-wrapper">
+        {icon}
+        {children}
+      </div>
+      {button}
     </div>
   );
 };

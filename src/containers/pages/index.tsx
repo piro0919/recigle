@@ -139,7 +139,7 @@ const Pages: FC = () => {
         ...searchHistories
           .filter((searchHistory) => searchHistory.startsWith(watch("value")))
           .map((value) => ({ value, type: "history" } as const)),
-        ...(completeSuggestion
+        ...(completeSuggestion && watch("value")
           ? completeSuggestion
               .filter(({ suggestion }) => {
                 const {
@@ -169,10 +169,19 @@ const Pages: FC = () => {
   >(() => {
     setAlwaysRenderSuggestions(true);
   }, []);
+  const isRemovedHistory = useRef(false);
   const handleChange = useCallback<
     NonNullable<SearchInputProps["handleChange"]>
   >(
     (_, { newValue }) => {
+      const { current } = isRemovedHistory;
+
+      if (current) {
+        isRemovedHistory.current = false;
+
+        return;
+      }
+
       setValue("value", newValue);
     },
     [setValue]
@@ -202,12 +211,23 @@ const Pages: FC = () => {
 
           handleSubmit(onSubmit)();
         }}
+        handleClickOnRemoveButton={() => {
+          isRemovedHistory.current = true;
+
+          dispatch(
+            setSearchHistory({
+              searchHistories: searchHistories.filter(
+                (searchHistory) => value !== searchHistory
+              ),
+            })
+          );
+        }}
         type={type}
       >
         {value}
       </Suggestion>
     ),
-    [handleSubmit, onSubmit, setValue]
+    [dispatch, handleSubmit, onSubmit, searchHistories, setValue]
   );
   const getSuggestionValue = useCallback<
     SearchInputProps["getSuggestionValue"]
