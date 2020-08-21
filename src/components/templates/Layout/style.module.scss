@@ -1,13 +1,13 @@
 .layout {
   display: grid;
   grid-template: 1fr 42px / 1fr;
+}
 
-  .children-wrapper {
-    padding: 24px 0;
-  }
+.children-wrapper {
+  padding: 24px 0;
+}
 
-  .footer-wrapper {
-    border-top: 1px solid #e4e4e4;
-    height: 100%;
-  }
+.footer-wrapper {
+  border-top: 1px solid #e4e4e4;
+  height: 100%;
 }

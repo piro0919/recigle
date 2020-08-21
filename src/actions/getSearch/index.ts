@@ -16,7 +16,7 @@ type CompleteSuggestion = {
 
 export type SearchResult = {
   toplevel: {
-    CompleteSuggestion: CompleteSuggestion[];
+    CompleteSuggestion?: CompleteSuggestion[];
   };
 };
 

@@ -1,48 +1,75 @@
-.search-input {
-  :global(.react-select__control) {
-    border: 1px solid #dfe1e5;
-    border-radius: 22px;
-    box-shadow: none;
-    height: 44px;
-    padding: 0 6px;
-    transition: 100ms;
-  }
-
-  :global(.react-select__control):hover {
-    background-color: inherit;
-    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-    border-color: rgba(223, 225, 229, 0);
-  }
-
-  :global(.react-select__indicator-separator),
-  :global(.react-select__dropdown-indicator) {
-    display: none;
-  }
-
-  .option {
-    padding: 0;
-  }
-
-  .button {
-    height: 100%;
-    width: 100%;
-  }
-
-  .option-inner {
-    align-items: center;
-    display: flex;
-    padding: 9px 12px;
-  }
-
-  .option-inner .icon {
-    height: 16px;
-    margin: 0 12px 0 0;
-    width: 16px;
-  }
-
-  .icon {
-    color: #9aa0a6;
-    height: 20px;
-    width: 20px;
-  }
+.container {
+  background: #fff;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  height: 44px;
 }
+
+.containerOpen {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-color: rgba(223, 225, 229, 0);
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+}
+
+.input-wrapper {
+  align-items: center;
+  display: flex;
+}
+
+.icon {
+  color: #9aa0a6;
+  height: 20px;
+  margin: 0 16px;
+  width: 20px;
+}
+
+.close-icon {
+  cursor: pointer;
+}
+
+.input {
+  cursor: text;
+  height: 44px;
+  width: 100%;
+}
+
+// .inputOpen {
+// }
+
+// .inputFocused {
+// }
+
+.suggestionsContainer {
+  background: #fff;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+  overflow: hidden;
+  position: relative;
+}
+
+// .suggestionsContainerOpen {
+// }
+
+// .suggestionsList {
+// }
+
+.suggestion {
+  height: 36px;
+}
+
+// .suggestionFirst {
+// }
+
+.suggestionHighlighted {
+  background: #eee;
+}
+
+// .sectionContainer {
+// }
+
+// .sectionContainerFirst {
+// }
+
+// .sectionTitle {
+// }

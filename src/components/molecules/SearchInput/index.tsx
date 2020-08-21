@@ -1,80 +1,114 @@
-import "./style.module.scss";
-import "./style.module.scss";
+import Autosuggest, { AutosuggestPropsSingleSection } from "react-autosuggest";
+import { MdClose, MdSearch } from "react-icons/md";
+import React, { DOMAttributes, FC, useCallback } from "react";
 
-import React, { FC, useCallback, useMemo } from "react";
-import Select, { components } from "react-select";
-
-import { BarLoader } from "react-spinners";
 import { Controller } from "react-hook-form";
-import { FiClock } from "react-icons/fi";
-import { MdSearch } from "react-icons/md";
-import { Props } from "react-select";
+import theme from "./style.module.scss";
 
-const { Option } = components;
+type Suggestion = {
+  type: "history" | "search";
+  value: string;
+};
 
-export type SearchInputProps = Pick<Props, "isLoading" | "options"> & {
+export type SearchInputProps = Pick<
+  AutosuggestPropsSingleSection<Suggestion>,
+  | "alwaysRenderSuggestions"
+  | "getSuggestionValue"
+  | "renderSuggestion"
+  | "suggestions"
+> & {
   control: any;
-  handleInputChange: Props["onInputChange"];
-  handleKeyDown: Props["onKeyDown"];
+  handleChange: AutosuggestPropsSingleSection<
+    Suggestion
+  >["inputProps"]["onChange"];
+  handleClick: AutosuggestPropsSingleSection<
+    Suggestion
+  >["inputProps"]["onClick"];
+  handleClickOnCloseButton: DOMAttributes<any>["onClick"];
+  handleSuggestionsClearRequested: AutosuggestPropsSingleSection<
+    Suggestion
+  >["onSuggestionsClearRequested"];
+  handleSuggestionsFetchRequested: AutosuggestPropsSingleSection<
+    Suggestion
+  >["onSuggestionsFetchRequested"];
+  inputRef: JSX.IntrinsicElements["input"]["ref"];
   name: string;
+  searchInputRef: any;
 };
 
 const SearchInput: FC<SearchInputProps> = ({
+  alwaysRenderSuggestions,
   control,
-  handleInputChange,
-  handleKeyDown,
-  isLoading,
+  getSuggestionValue,
+  handleChange,
+  handleClick,
+  handleClickOnCloseButton,
+  handleSuggestionsClearRequested,
+  handleSuggestionsFetchRequested,
+  inputRef,
   name,
-  options,
+  renderSuggestion,
+  searchInputRef,
+  suggestions,
 }) => {
-  const option = useCallback((props) => {
-    const {
-      data: { icon, label },
-    } = props;
-    const iconNode =
-      icon === "history" ? (
-        <FiClock styleName="icon" />
-      ) : (
+  const renderInputComponent = useCallback<
+    NonNullable<
+      AutosuggestPropsSingleSection<Suggestion>["renderInputComponent"]
+    >
+  >(
+    ({ onChange, ...inputProps }) => (
+      <div styleName="input-wrapper">
         <MdSearch styleName="icon" />
-      );
-
-    return (
-      <Option {...props} styleName="option">
-        <button styleName="button" type="submit">
-          <div styleName="option-inner">
-            {iconNode}
-            {label}
-          </div>
-        </button>
-      </Option>
-    );
-  }, []);
-  const components = useMemo<Props["components"]>(
-    () => ({
-      Option: option,
-    }),
-    [option]
+        <input {...inputProps} onChange={onChange as any} />
+        <MdClose
+          onClick={handleClickOnCloseButton}
+          styleName="icon close-icon"
+        />
+      </div>
+    ),
+    [handleClickOnCloseButton]
+  );
+  const render = useCallback(
+    ({ value }) => (
+      <Autosuggest
+        alwaysRenderSuggestions={alwaysRenderSuggestions}
+        getSuggestionValue={getSuggestionValue}
+        inputProps={
+          {
+            value,
+            onChange: handleChange,
+            onClick: handleClick,
+            placeholder: "料理名や食材で検索",
+            ref: inputRef,
+            type: "search",
+          } as any // TODO: ref の型対応待ち
+        }
+        onSuggestionsClearRequested={handleSuggestionsClearRequested}
+        onSuggestionsFetchRequested={handleSuggestionsFetchRequested}
+        renderInputComponent={renderInputComponent}
+        renderSuggestion={renderSuggestion}
+        suggestions={suggestions}
+        theme={theme}
+      />
+    ),
+    [
+      alwaysRenderSuggestions,
+      getSuggestionValue,
+      handleChange,
+      handleClick,
+      handleSuggestionsClearRequested,
+      handleSuggestionsFetchRequested,
+      inputRef,
+      renderInputComponent,
+      renderSuggestion,
+      suggestions,
+    ]
   );
 
   return (
-    <Controller
-      as={Select}
-      classNamePrefix="react-select"
-      closeMenuOnSelect={false}
-      components={components}
-      control={control}
-      isClearable={true}
-      isLoading={isLoading}
-      loadingMessage={() => <BarLoader color="#9aa0a6" height={4} width={40} />}
-      menuPosition="fixed"
-      name={name}
-      noOptionsMessage={() => "検索してみてください"}
-      onInputChange={handleInputChange}
-      onKeyDown={handleKeyDown}
-      options={options}
-      placeholder={<MdSearch styleName="icon" />}
-      styleName="search-input"
-    />
+    <div ref={searchInputRef}>
+      <Controller control={control} name={name} render={render} />
+    </div>
   );
 };
 

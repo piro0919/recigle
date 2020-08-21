@@ -1,0 +1,31 @@
+.suggestion {
+  align-items: center;
+  color: #52188c;
+  cursor: default;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.text-wrapper {
+  align-items: center;
+  display: flex;
+  flex: auto;
+}
+
+.icon {
+  color: #9aa0a6;
+  height: 16px;
+  margin: 0 18px;
+  width: 16px;
+}
+
+.button {
+  color: #80868b;
+  font-size: 1.2rem;
+  margin: 0 18px;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
