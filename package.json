@@ -15,7 +15,7 @@
     "@types/react-dom": "16.9.9",
     "@types/react-redux": "7.1.11",
     "@types/react-router-dom": "5.1.6",
-    "@types/xml2js": "0.4.5",
+    "@types/xml2js": "0.4.6",
     "axios": "0.21.0",
     "babel-plugin-react-css-modules": "5.2.6",
     "http-proxy-middleware": "1.0.6",
