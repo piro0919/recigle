@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "typescript": "4.6.4",
-    "firebase-functions-test": "2.0.1"
+    "firebase-functions-test": "2.0.2"
   },
   "private": true
 }
