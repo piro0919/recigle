@@ -3,7 +3,7 @@ export default function buildSearchUrl(
   blacklist: string[],
 ): string {
   const exclusions = blacklist.map((d) => `-site:${d}`).join(" ");
-  const q = `レシピ ${query} ${exclusions}`.trim().replace(/\s+/g, " ");
+  const q = `${query} レシピ ${exclusions}`.trim().replace(/\s+/g, " ");
 
-  return `https://duckduckgo.com/?q=${encodeURIComponent(q)}`;
+  return `https://www.google.com/search?q=${encodeURIComponent(q)}`;
 }

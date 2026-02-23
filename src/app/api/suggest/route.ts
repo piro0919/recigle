@@ -10,7 +10,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
   try {
     const res = await fetch(
-      `https://suggestqueries.google.com/complete/search?client=firefox&hl=ja&q=${encodeURIComponent(q)}`,
+      `https://suggestqueries.google.com/complete/search?client=firefox&hl=ja&q=${encodeURIComponent(`${q} レシピ`)}`,
     );
 
     if (!res.ok) {
@@ -26,7 +26,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       const suggestions = [
         ...new Set(
           (data[1] as string[])
-            .map((s) => s.replace(/レシピ\s*/g, "").trim())
+            .map((s) => s.replace(/\s*レシピ/g, "").trim())
             .filter(Boolean),
         ),
       ];

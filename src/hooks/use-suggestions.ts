@@ -28,9 +28,7 @@ export default function useSuggestions(histories: string[]): {
 
       timerRef.current = setTimeout(async () => {
         try {
-          const res = await fetch(
-            `/api/suggest?q=${encodeURIComponent(`レシピ ${q}`)}`,
-          );
+          const res = await fetch(`/api/suggest?q=${encodeURIComponent(q)}`);
           const data: string[] = await res.json();
 
           const trimmedQuery = q.trim().replace(/\s+/g, " ");
