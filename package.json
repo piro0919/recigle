@@ -1,201 +1,42 @@
 {
-  "dependencies": {
-    "@mpth/react-no-ssr": "1.0.1",
-    "axios": "0.21.1",
-    "camelcase-keys": "7.0.0",
-    "next": "11.0.1",
-    "next-i18next": "8.5.5",
-    "next-pwa": "5.2.24",
-    "node-sass": "5.0.0",
-    "react": "17.0.2",
-    "react-autosuggest": "10.1.0",
-    "react-dom": "17.0.2",
-    "react-grid-system": "7.2.0",
-    "react-hook-form": "7.12.2",
-    "react-icons": "4.2.0",
-    "react-ios-pwa-prompt": "1.8.4",
-    "react-storage-hooks": "4.0.1",
-    "react-three-toggle": "0.5.2",
-    "ress": "4.0.0",
-    "rooks": "5.4.5",
-    "sass-mq": "5.0.1",
-    "sweetalert": "2.1.2",
-    "use-pwa": "1.0.1",
-    "xml2js": "0.4.23"
-  },
-  "devDependencies": {
-    "@types/react": "17.0.15",
-    "@types/react-autosuggest": "10.1.5",
-    "@types/xml2js": "0.4.9",
-    "@typescript-eslint/eslint-plugin": "4.29.0",
-    "@typescript-eslint/parser": "4.29.0",
-    "eslint": "7.32.0",
-    "eslint-config-next": "11.0.1",
-    "eslint-config-prettier": "8.3.0",
-    "eslint-plugin-css-modules": "2.11.0",
-    "eslint-plugin-import": "2.23.4",
-    "eslint-plugin-jsx-a11y": "6.4.1",
-    "eslint-plugin-prettier": "3.4.0",
-    "eslint-plugin-react": "7.24.0",
-    "eslint-plugin-react-hooks": "4.2.0",
-    "eslint-plugin-sort-keys-shorthand": "2.1.0",
-    "eslint-plugin-typescript-sort-keys": "1.7.0",
-    "prettier": "2.3.2",
-    "stylelint": "13.13.1",
-    "stylelint-config-css-modules": "2.2.0",
-    "stylelint-config-recommended-scss": "4.3.0",
-    "stylelint-config-sass-guidelines": "8.0.0",
-    "stylelint-scss": "3.20.1",
-    "typescript": "4.3.5",
-    "typescript-plugin-css-modules": "3.4.0"
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "commonjs": true,
-      "es6": true,
-      "node": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:prettier/recommended",
-      "plugin:import/errors",
-      "plugin:import/warnings",
-      "plugin:import/typescript",
-      "plugin:react-hooks/recommended",
-      "plugin:jsx-a11y/recommended",
-      "plugin:css-modules/recommended",
-      "plugin:typescript-sort-keys/recommended",
-      "prettier"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "ecmaVersion": 2020,
-      "project": [
-        "./tsconfig.json"
-      ],
-      "sourceType": "module"
-    },
-    "plugins": [
-      "prettier",
-      "react",
-      "@typescript-eslint",
-      "import",
-      "sort-keys-shorthand",
-      "jsx-a11y",
-      "css-modules",
-      "typescript-sort-keys"
-    ],
-    "rules": {
-      "import/order": [
-        "error",
-        {
-          "alphabetize": {
-            "caseInsensitive": true,
-            "order": "asc"
-          }
-        }
-      ],
-      "jsx-a11y/anchor-is-valid": [
-        "error",
-        {
-          "aspects": [
-            "invalidHref",
-            "preferButton"
-          ],
-          "components": [
-            "Link"
-          ],
-          "specialLink": [
-            "hrefLeft",
-            "hrefRight"
-          ]
-        }
-      ],
-      "prettier/prettier": "error",
-      "react/jsx-sort-props": [
-        "error",
-        {
-          "callbacksLast": false,
-          "ignoreCase": false,
-          "noSortAlphabetically": false,
-          "reservedFirst": false,
-          "shorthandFirst": false,
-          "shorthandLast": false
-        }
-      ],
-      "react/jsx-uses-react": "off",
-      "react/react-in-jsx-scope": "off",
-      "sort-keys-shorthand/sort-keys-shorthand": [
-        "error",
-        "asc",
-        {
-          "caseSensitive": true,
-          "natural": true,
-          "shorthand": "first"
-        }
-      ]
-    },
-    "settings": {
-      "import/resolver": {
-        "node": {
-          "paths": [
-            "src"
-          ]
-        }
-      },
-      "react": {
-        "version": "detect"
-      }
-    }
-  },
-  "name": "recigle3",
+  "name": "recigle",
+  "version": "1.0.0",
   "private": true,
-  "resolutions": {
-    "sass": "1.32.13"
-  },
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
-    "lint:es": "eslint src --ext .ts,.tsx --fix",
-    "lint:style": "stylelint 'src/**/*.scss' --fix",
-    "preinstall": "npx npm-force-resolutions",
-    "start": "next start"
+    "check": "biome check --write .",
+    "dev": "next dev --turbopack",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "knip": "knip",
+    "secretlint": "secretlint '**/*'",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
   },
-  "stylelint": {
-    "extends": [
-      "stylelint-config-sass-guidelines",
-      "stylelint-config-recommended-scss",
-      "stylelint-config-css-modules"
-    ],
-    "plugins": [
-      "stylelint-scss"
-    ],
-    "rules": {
-      "at-rule-no-unknown": [
-        true,
-        {
-          "ignoreAtRules": [
-            "include",
-            "mixin"
-          ]
-        }
-      ],
-      "color-named": [
-        "never",
-        {
-          "ignore": [
-            "inside-function"
-          ]
-        }
-      ],
-      "selector-class-pattern": null
-    }
+  "dependencies": {
+    "@serwist/turbopack": "^9.5.6",
+    "@tailwindcss/postcss": "^4.2.1",
+    "esbuild-wasm": "^0.27.3",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0",
+    "serwist": "^9.5.6",
+    "tailwindcss": "^4.2.1",
+    "use-pwa": "^3.0.1"
   },
-  "version": "0.1.0"
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.4",
+    "@commitlint/cli": "^20.4.2",
+    "@commitlint/config-conventional": "^20.4.2",
+    "@secretlint/secretlint-rule-preset-recommend": "^11.3.1",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "esbuild": "^0.27.3",
+    "knip": "^5.85.0",
+    "lefthook": "^2.1.1",
+    "secretlint": "^11.3.1",
+    "typescript": "^5.7.0"
+  }
 }

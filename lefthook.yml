@@ -1,0 +1,17 @@
+pre-commit:
+  parallel: true
+  commands:
+    biome:
+      glob: "**/*.{ts,tsx,css,json}"
+      run: npx biome check --write {staged_files}
+      stage_fixed: true
+    secretlint:
+      glob: "**/*"
+      run: npx secretlint --maskSecrets {staged_files}
+    typescript:
+      run: npx tsc --noEmit
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npx commitlint --edit {1}
