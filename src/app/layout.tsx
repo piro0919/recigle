@@ -46,6 +46,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   initialScale: 1,
+  interactiveWidget: "resizes-content",
   width: "device-width",
 };
 
