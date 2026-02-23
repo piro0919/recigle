@@ -2,14 +2,25 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
-export const alt = "レシグル | レシピを検索する";
+export const alt = "レシグル | レシピをGoogle検索する";
 export const size = { height: 630, width: 1200 };
 export const contentType = "image/png";
 
 export default async function Image(): Promise<ImageResponse> {
-  const font = await readFile(
-    join(process.cwd(), "src/app/fonts/NP_Shimizu.ttf"),
-  );
+  const [shimizuFont, notoFont] = await Promise.all([
+    readFile(join(process.cwd(), "src/app/fonts/NP_Shimizu.ttf")),
+    fetch(
+      "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap",
+    )
+      .then((css) => css.text())
+      .then((text) => {
+        const url = text.match(
+          /src: url\((.+?)\) format\('(opentype|truetype)'\)/,
+        )?.[1];
+
+        return url ? fetch(url).then((r) => r.arrayBuffer()) : null;
+      }),
+  ]);
 
   return new ImageResponse(
     <div
@@ -40,22 +51,33 @@ export default async function Image(): Promise<ImageResponse> {
         style={{
           color: "#5f6368",
           display: "flex",
+          fontFamily: "Noto Sans JP",
           fontSize: 36,
           marginTop: 16,
         }}
       >
-        レシピを検索する
+        レシピをGoogle検索する
       </div>
     </div>,
     {
       ...size,
       fonts: [
         {
-          data: font,
+          data: shimizuFont,
           name: "Shimizu",
           style: "normal",
           weight: 400,
         },
+        ...(notoFont
+          ? [
+              {
+                data: notoFont,
+                name: "Noto Sans JP",
+                style: "normal" as const,
+                weight: 400 as const,
+              },
+            ]
+          : []),
       ],
     },
   );

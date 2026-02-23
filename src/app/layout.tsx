@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "レシグル",
   },
-  description: "レシピを検索する",
+  description: "レシピをGoogle検索する",
   formatDetection: {
     telephone: false,
   },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "レシグル",
     type: "website",
   },
-  title: "レシグル | レシピを検索する",
+  title: "レシグル | レシピをGoogle検索する",
   twitter: {
     card: "summary_large_image",
   },

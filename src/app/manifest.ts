@@ -21,7 +21,7 @@ export default function manifest(): MetadataRoute.Manifest {
         type: "image/png",
       },
     ],
-    name: "レシグル | レシピを検索する",
+    name: "レシグル | レシピをGoogle検索する",
     orientation: "portrait",
     short_name: "レシグル",
     start_url: "/",
