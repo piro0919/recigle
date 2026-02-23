@@ -1,0 +1,29 @@
+import type { MetadataRoute } from "next";
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    background_color: "#ffffff",
+    display: "standalone",
+    icons: [
+      {
+        sizes: "64x64 32x32 24x24 16x16",
+        src: "/favicon.ico",
+        type: "image/x-icon",
+      },
+      {
+        sizes: "192x192",
+        src: "/logo192.png",
+        type: "image/png",
+      },
+      {
+        sizes: "512x512",
+        src: "/logo512.png",
+        type: "image/png",
+      },
+    ],
+    name: "レシグル | レシピを検索する",
+    short_name: "レシグル",
+    start_url: "/",
+    theme_color: "#000000",
+  };
+}
