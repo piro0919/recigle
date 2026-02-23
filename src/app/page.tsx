@@ -7,7 +7,7 @@ export default async function Page(): Promise<ReactNode> {
   const blacklist = await fetchBlacklist();
 
   return (
-    <div className="flex h-dvh items-center justify-center">
+    <div className="flex min-h-dvh items-center justify-center">
       <div className="w-full max-w-[572px] p-4 tablet:p-6">
         <div className="flex justify-center pb-6">
           <Heading />
