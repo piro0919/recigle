@@ -33,19 +33,14 @@ export const metadata: Metadata = {
     apple: "/logo512.png",
     icon: "/favicon.ico",
   },
-
+  metadataBase: new URL("https://recigle.kk-web.link"),
   openGraph: {
-    description: "レシピを検索する",
-    images: "https://recigle.kk-web.link/logo512.png",
     siteName: "レシグル",
-    title: "レシグル",
     type: "website",
   },
   title: "レシグル | レシピを検索する",
   twitter: {
-    card: "summary",
-    description: "レシピを検索する",
-    title: "レシグル",
+    card: "summary_large_image",
   },
 };
 
