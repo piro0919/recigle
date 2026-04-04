@@ -22,7 +22,7 @@ export default function manifest(): MetadataRoute.Manifest {
       },
     ],
     name: "レシグル | レシピをGoogle検索する",
-    orientation: "portrait",
+    orientation: "any",
     short_name: "レシグル",
     start_url: "/",
     theme_color: "#000000",
