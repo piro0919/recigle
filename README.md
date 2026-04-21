@@ -1,8 +1,6 @@
-# Recigle (レシグル)
+# Recigle
 
 > Recipe search that excludes amateur blogs and video sites.
-
-レシピ検索時に素人レシピサイト・個人ブログ・動画サイトを除外して検索できる Web アプリ。
 
 [🔗 Live Site](https://recigle.kkweb.io/)
 
