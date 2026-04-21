@@ -1,8 +1,19 @@
-# レシグル (Recigle)
+# Recigle (レシグル)
 
-レシピ検索時に素人レシピサイト・個人ブログ・動画サイトを除外して検索できる Web アプリ
+> Recipe search that excludes amateur blogs and video sites.
 
-## 技術スタック
+レシピ検索時に素人レシピサイト・個人ブログ・動画サイトを除外して検索できる Web アプリ。
+
+[🔗 Live Site](https://recigle.kkweb.io/)
+
+## ✨ Features
+
+- 🔍 Recipe search with curated, professional sources
+- 🚫 Excludes amateur recipe blogs and video-only sites
+- 📱 Installable PWA for mobile use
+- 🌐 Japanese-focused recipe discovery
+
+## 🛠 Tech Stack
 
 - **Next.js 15** (App Router, Turbopack)
 - **React 19**
@@ -10,38 +21,21 @@
 - **Serwist** (PWA)
 - **Biome** (Linter / Formatter)
 
-## セットアップ
+## 🚀 Getting Started
 
 ```bash
-# 依存関係のインストール
 npm install
-
-# 開発サーバー起動
 npm run dev
 ```
 
-## 開発コマンド
+## 📋 Scripts
 
 ```bash
-npm run dev          # 開発サーバー
-npm run build        # ビルド
-npm run start        # プロダクションサーバー
-npm run lint         # リント
-npm run check        # リント + 自動修正
-npm run format       # フォーマット
-npm run typecheck    # 型チェック
-npm run knip         # 未使用コード検出
-npm run secretlint   # シークレット検出
+npm run build     # Production build
+npm run lint      # Run Biome linter
+npm run typecheck # TypeScript type check
 ```
 
-## ディレクトリ構成
+## 📄 License
 
-```txt
-src/
-├── app/
-│   ├── _components/  # ページ固有コンポーネント
-│   ├── api/suggest/  # Google Suggest プロキシ
-│   └── serwist/      # Service Worker ルート
-├── hooks/            # カスタムフック
-└── lib/              # ユーティリティ
-```
+MIT
