@@ -30,7 +30,7 @@
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
     "@secretlint/secretlint-rule-preset-recommend": "^11.7.1",
-    "@types/node": "^22.19.18",
+    "@types/node": "^22.19.19",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "esbuild": "^0.28.0",
