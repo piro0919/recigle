@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     apple: "/logo512.png",
     icon: "/favicon.ico",
   },
-  metadataBase: new URL("https://recigle.kk-web.link"),
+  metadataBase: new URL("https://recigle.kkweb.io"),
   openGraph: {
     siteName: "レシグル",
     type: "website",
