@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -57,6 +58,7 @@ export default function RootLayout({
     <html lang="ja" className={`${shimizu.variable} ${montserrat.variable}`}>
       <body>
         <SerwistProvider swUrl="/serwist">{children}</SerwistProvider>
+        <Analytics />
       </body>
     </html>
   );

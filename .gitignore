@@ -32,3 +32,6 @@ yarn-debug.log*
 
 # claude code
 .claude/settings.local.json
+
+# Lighthouse CI reports
+.lighthouseci
