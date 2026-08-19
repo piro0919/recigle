@@ -2,6 +2,13 @@
   "name": "recigle",
   "version": "1.0.0",
   "private": true,
+  "browserslist": [
+    "chrome >= 87",
+    "edge >= 88",
+    "firefox >= 78",
+    "opera >= 73",
+    "safari >= 14.1"
+  ],
   "scripts": {
     "build": "next build",
     "check": "biome check --write .",
