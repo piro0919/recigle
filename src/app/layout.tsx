@@ -20,6 +20,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/" },
   applicationName: "レシグル",
   appleWebApp: {
     capable: true,
@@ -38,6 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: "レシグル",
     type: "website",
+    url: "/",
   },
   title: "レシグル | レシピをGoogle検索する",
   twitter: {
