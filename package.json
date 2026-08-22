@@ -22,7 +22,7 @@
     "lighthouse": "npm run build && lhci autorun"
   },
   "dependencies": {
-    "@serwist/turbopack": "^9.5.7",
+    "@serwist/turbopack": "^9.5.12",
     "@tailwindcss/postcss": "^4.3.3",
     "@vercel/analytics": "^2.0.1",
     "esbuild-wasm": "^0.28.2",
@@ -30,7 +30,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-icons": "^5.7.0",
-    "serwist": "^9.5.7",
+    "serwist": "^9.5.12",
     "tailwindcss": "^4.3.3",
     "use-pwa": "^3.0.3"
   },
