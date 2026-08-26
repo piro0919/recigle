@@ -26,7 +26,7 @@
     "@tailwindcss/postcss": "^4.3.3",
     "@vercel/analytics": "^2.0.1",
     "esbuild-wasm": "^0.28.2",
-    "next": "^15.5.23",
+    "next": "^16.3.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-icons": "^5.7.0",
@@ -36,17 +36,17 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.10",
-    "@commitlint/cli": "^20.5.3",
-    "@commitlint/config-conventional": "^20.5.3",
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
     "@lhci/cli": "^0.15.1",
-    "@secretlint/secretlint-rule-preset-recommend": "^11.7.1",
-    "@types/node": "^22.20.1",
+    "@secretlint/secretlint-rule-preset-recommend": "^13.0.4",
+    "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "esbuild": "^0.28.2",
-    "knip": "^5.88.1",
+    "knip": "^6.32.2",
     "lefthook": "^2.1.10",
-    "secretlint": "^11.7.1",
-    "typescript": "^5.9.3"
+    "secretlint": "^13.0.4",
+    "typescript": "^7.0.2"
   }
 }
