@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import About from "@/app/_components/about";
 import Heading from "@/app/_components/heading";
 import SearchForm from "@/app/_components/search-form";
 import fetchBlacklist from "@/lib/fetch-blacklist";
@@ -13,6 +14,9 @@ export default async function Page(): Promise<ReactNode> {
           <Heading />
         </div>
         <SearchForm blacklist={blacklist} />
+        <div className="flex justify-center pt-10">
+          <About />
+        </div>
       </div>
     </div>
   );

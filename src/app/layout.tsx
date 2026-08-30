@@ -27,7 +27,8 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "レシグル",
   },
-  description: "レシピをGoogle検索する",
+  description:
+    "個人のブログや動画だけのサイトを除いて、レシピを Google 検索できるサイトです。料理名や材料を入れると、除外を組み込んだ検索結果が開きます。",
   formatDetection: {
     telephone: false,
   },
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
   },
-  title: "レシグル | レシピをGoogle検索する",
+  title: "レシグル｜個人ブログと動画サイトを除いたレシピ検索",
   twitter: {
     card: "summary_large_image",
   },
