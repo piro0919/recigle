@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
-  "entry": ["src/app/**/*.{ts,tsx}"],
+  "entry": ["src/app/**/*.{ts,tsx}", "src/**/*.test.ts"],
   "ignoreDependencies": [
     "@secretlint/secretlint-rule-preset-recommend",
     "postcss"
