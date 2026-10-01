@@ -45,7 +45,12 @@
         "useSelfClosingElements": "error"
       },
       "suspicious": {
-        "noConsole": "warn",
+        "noConsole": {
+          "level": "warn",
+          "options": {
+            "allow": ["error"]
+          }
+        },
         "noExplicitAny": "warn"
       }
     }
