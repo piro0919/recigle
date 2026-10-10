@@ -40,6 +40,7 @@
     "@commitlint/cli": "^21.2.3",
     "@commitlint/config-conventional": "^21.2.3",
     "@lhci/cli": "^0.15.1",
+    "@piro0919/biome-config": "github:piro0919/biome-config#v1.0.0",
     "@secretlint/secretlint-rule-preset-recommend": "^13.0.7",
     "@types/node": "^24.19.1",
     "@types/react": "^19.3.0",
